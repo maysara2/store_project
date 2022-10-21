@@ -54,8 +54,10 @@
                 <div id="collapseone" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                        <a class="collapse-item" href="buttons.html">All Prodects</a>
-                        <a class="collapse-item" href="cards.html">Add New</a>
+                        <a class="collapse-item" href="{{ route('admin.products.index') }}">All Prodects</a>
+                        <a class="collapse-item" href="{{ route('admin.products.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('admin.products.trash') }}">Trash</a>
+
                     </div>
                 </div>
             </li>
@@ -73,7 +75,7 @@
                     </li>
                     <hr class="sidebar-divider">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{ route('admin.users.index') }}">
                         <i class="fas fa-fw fa-users"></i>
                         <span>{{ __('admin.users') }}</span></a>
                     </li>
