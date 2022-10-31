@@ -37,7 +37,9 @@ class MainConteoller extends Controller
         $product = Product::with('reviews', 'category')->findOrfail($id);
         $next=product::select('id')->where('id','>',$product->id)->first();
         $prev=product::select('id')->where('id','<' ,$product->id)->orderByDesc('id')->first();
-        return view('site.product',compact('product','next','prev'));
+
+        $related=Product::where('category_id',$product->category_id)->where('id','!=',$product->id)->get();
+        return view('site.product',compact('product','next','prev','related'));
     }
 
 }

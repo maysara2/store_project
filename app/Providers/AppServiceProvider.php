@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -35,5 +36,8 @@ class AppServiceProvider extends ServiceProvider
         View::share('global_categories', Category::with('children')->whereNull('parent_id')->limit(4)->get());
         // View::share('content2','content_'.app()->currentLocale());
         Paginator::useBootstrapFive();
+
+        // dd(Auth::user());
+        // View::share('user_cart',Auth::user()->carts);
     }
 }

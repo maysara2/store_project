@@ -37,9 +37,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                        <a class="collapse-item" href="{{ route('admin.categories.index') }}">All Categories</a>
-                        <a class="collapse-item" href="{{ route('admin.categories.create') }}">Add New</a>
-                        <a class="collapse-item" href="{{ route('admin.categories.trash') }}">Trash</a>
+                        <a class="collapse-item" href="{{ route('admin.categories.index') }}">{{ __('admin.all categories') }}</a>
+                        <a class="collapse-item" href="{{ route('admin.categories.create') }}">{{ __('admin.addnew') }}</a>
+                        <a class="collapse-item" href="{{ route('admin.categories.trash') }}">{{ __('admin.trash') }}</a>
 
                     </div>
                 </div>
@@ -54,9 +54,9 @@
                 <div id="collapseone" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                        <a class="collapse-item" href="{{ route('admin.products.index') }}">All Prodects</a>
-                        <a class="collapse-item" href="{{ route('admin.products.create') }}">Add New</a>
-                        <a class="collapse-item" href="{{ route('admin.products.trash') }}">Trash</a>
+                        <a class="collapse-item" href="{{ route('admin.products.index') }}">{{ __('admin.allProdects') }}</a>
+                        <a class="collapse-item" href="{{ route('admin.products.create') }}">{{ __('admin.addNewp') }}</a>
+                        <a class="collapse-item" href="{{ route('admin.products.trash') }}">{{ __('admin.trashp') }}</a>
 
                     </div>
                 </div>

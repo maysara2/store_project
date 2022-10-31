@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProdectConteoller;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserConteoller;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainConteoller;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -51,6 +52,13 @@ Route::get('/',[AdminController::class,'index'])->name('index');
     Route::get('/category/{id}',[MainConteoller::class,'category'])->name('site.category');
     Route::get('/search',[MainConteoller::class,'search'])->name('site.search');
     Route::get('/product/{id}',[MainConteoller::class,'product'])->name('site.product');
+
+
+    Route::post('add_to_cart',[CartController::class,'add_to_cart'])->name('site.add_to_cart');
+
+    // Route::get('/cart',[CartController::class,'cart'])->name('site.cart');
+    // Route::get('/checkout',[CartController::class,'checkout'])->name('site.checkout');
+
 
 });
 

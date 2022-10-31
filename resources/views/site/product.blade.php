@@ -40,6 +40,11 @@
                     </div>
                 </div>
                 <div class="col-md-7">
+
+                    @if (session('msg'))
+                    <div class="alert alert-success">{{ session('msg') }}</div>
+                    @endif
+
                     <div class="single-product-details">
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
                         <div class="single-product-details">
@@ -67,21 +72,30 @@
                         <p class="product-description mt-20">
                             {!! Str::words($product->$content2, 19, '...') !!}
                         </p>
-                        <div class="product-quantity">
-                            <span>Quantity:</span>
-                            <div class="product-quantity-slider">
-                                <input id="product-quantity" type="text" value="0" name="product-quantity">
-                            </div>
-                        </div>
-                        <div class="product-category">
-                            <span>Categories:</span>
-                            <ul>
-                                <li><a
-                                        href="{{ route('site.category', $product->category_id) }}">{{ $product->category->$name }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="cart.html" class="btn btn-main mt-20">Add To Cart</a>
+
+             <form action="{{ route('site.add_to_cart') }}" method="POST">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+            <div class="product-quantity">
+
+                <span>Quantity:</span>
+                <div class="product-quantity-slider">
+                    <input id="product-quantity" type="text" value="1" name="quantity">
+                </div>
+            </div>
+            <div class="product-category">
+                <span>Categories:</span>
+                <ul>
+                    <li><a
+                            href="{{ route('site.category', $product->category_id) }}">{{ $product->category->$name }}</a>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn btn-main mt-20">Add To Cart</button>
+
+
+            </form>
                     </div>
                 </div>
             </div>
@@ -153,111 +167,12 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($related as $product)
                 <div class="col-md-3">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <span class="bage">Sale</span>
-                            <img class="img-responsive" src="images/shop/products/product-5.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Reef Boardsport</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
+                    @include('site.parts.product_box')
                 </div>
-                <div class="col-md-3">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="images/shop/products/product-1.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="images/shop/products/product-2.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Strayhorn SP</a></h4>
-                            <p class="price">$230</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="images/shop/products/product-3.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Bradley Mid</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
 
             </div>
         </div>

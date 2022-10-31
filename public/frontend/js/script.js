@@ -15,7 +15,7 @@
     });
   });
 
-  
+
   // Instagram Feed
   if (($('#instafeed').length) !== 0) {
     var accessToken = $('#instafeed').attr('data-accessToken');
@@ -60,7 +60,7 @@
 
 
   // e-commerce touchspin
-  $('input[name=\'product-quantity\']').TouchSpin();
+  $('input[name=\'quantity\']').TouchSpin();
 
 
   // Video Lightbox
