@@ -69,7 +69,7 @@
                 </li>
                 <hr class="sidebar-divider">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{ route('admin.index') }}">
                         <i class="fas fa-fw fa-money-bill"></i>
                         <span>{{ __('admin.payments') }}</span></a>
                     </li>

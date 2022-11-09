@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserConteoller;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainConteoller;
+use App\Http\Controllers\PaymentController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::prefix(LaravelLocalization::setLocale())->group(function(){
@@ -34,6 +35,9 @@ Route::get('/',[AdminController::class,'index'])->name('index');
         Route::get('users',[UserConteoller::class,'index'])->name('users.index');
         Route::delete('users/{id}',[UserConteoller::class,'destroy'])->name('users.destroy');
 
+        // Route::get('payment',[PaymentController::class,'index'])->name('payment.index');
+        // Route::delete('payment/{id}',[PaymentController::class,'destroy'])->name('payment.destroy');
+
 
     });
     Auth::routes();
@@ -56,8 +60,23 @@ Route::get('/',[AdminController::class,'index'])->name('index');
 
     Route::post('add_to_cart',[CartController::class,'add_to_cart'])->name('site.add_to_cart');
 
-    // Route::get('/cart',[CartController::class,'cart'])->name('site.cart');
-    // Route::get('/checkout',[CartController::class,'checkout'])->name('site.checkout');
+    Route::get('/cart',[CartController::class,'cart'])
+    ->name('site.cart')->middleware('auth');
+
+    Route::delete('/cart/{id}',[CartController::class,'delete_cart'])
+    ->name('site.delete_cart')->middleware('auth');
+
+    Route::get('/checkout',[CartController::class,'checkout'])
+    ->name('site.checkout')->middleware('auth');
+
+    Route::get('/payment',[CartController::class,'payment'])
+    ->name('site.payment')->middleware('auth');
+
+    Route::get('/payment/success', [CartController::class, 'success'])
+    ->name('site.success')->middleware('auth');
+
+    Route::get('/payment/fail', [CartController::class, 'fail'])
+    ->name('site.fail')->middleware('auth');
 
 
 });

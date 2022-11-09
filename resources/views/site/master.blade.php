@@ -36,6 +36,15 @@
 <!-- Main Stylesheet -->
 <link rel="stylesheet" href="{{asset('frontend/css/style.css') }} ">
 
+<style>
+    button {
+        border: 0;
+
+    }
+</style>
+
+
+
 @yield('styles')
 </head>
 
@@ -64,7 +73,7 @@
                             font-family="AustinBold, Austin" font-weight="bold">
                             <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
                                 <text id="AVIATO">
-                                    <tspan x="108.94" y="325">AVIATO</tspan>
+                                    <tspan x="108.94" y="325">{{ env('APP_NAME') }}</tspan>
                                 </text>
                             </g>
                         </g>
@@ -100,7 +109,11 @@
                                             </div>
                                             <h5><strong>${{ $cart->quantity *$cart->price }}</strong></h5>
                                         </div>
-                                        <a href="#!" class="remove"><i class="tf-ion-close"></i></a>
+                                        <form action="{{ route('site.delete_cart', $cart->id) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button  class="remove"><i class="tf-ion-close"></i></button>
+                                            </form>
                                     </div>
                                     @php
                                     $total += $cart->quantity * $cart->price;
@@ -113,8 +126,8 @@
                             <span class="total-price">${{ $total }}</span>
                         </div>
                         <ul class="text-center cart-buttons">
-                            <li><a href="#" class="btn btn-small">View Cart</a></li>
-                            <li><a href="#" class="btn btn-small btn-solid-border">Checkout</a></li>
+                            <li><a href="{{ route('site.cart') }}" class="btn btn-small">View Cart</a></li>
+                            <li><a href="{{ route('site.checkout') }}" class="btn btn-small btn-solid-border">Checkout</a></li>
                         </ul>
                     </div>
 
@@ -241,21 +254,8 @@
                     </a>
                 </li>
             </ul>
-            <ul class="footer-menu text-uppercase">
-                <li>
-                    <a href="contact.html">CONTACT</a>
-                </li>
-                <li>
-                    <a href="shop.html">SHOP</a>
-                </li>
-                <li>
-                    <a href="pricing.html">Pricing</a>
-                </li>
-                <li>
-                    <a href="contact.html">PRIVACY POLICY</a>
-                </li>
-            </ul>
-            <p class="copyright-text">Copyright &copy;2021, Designed &amp; Developed by <a href="https://themefisher.com/">Themefisher</a></p>
+  
+            {{-- <p class="copyright-text">Copyright &copy;2021, Designed &amp; Developed by <a href="https://themefisher.com/">Themefisher</a></p> --}}
         </div>
     </div>
 </div>
