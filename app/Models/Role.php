@@ -13,4 +13,9 @@ class Role extends Model
 
         protected $guarded=[];
 
+        public function abilities()
+        {
+          return $this->belongsToMany(Ability::class);
+        }
+
 }

@@ -74,11 +74,17 @@
                         <span>{{ __('admin.payments') }}</span></a>
                     </li>
                     <hr class="sidebar-divider">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.users.index') }}">
-                        <i class="fas fa-fw fa-users"></i>
-                        <span>{{ __('admin.users') }}</span></a>
-                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.users.index') }}">
+                            <i class="fas fa-fw fa-users"></i>
+                            <span>{{ __('admin.users') }}</span></a>
+                        </li>
+                    <hr class="sidebar-divider">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.roles.index') }}">
+                                <i class="fas fa-fw fa-lock"></i>
+                                <span>{{ __('admin.Roles') }}</span></a>
+                            </li>
 
 
 

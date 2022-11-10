@@ -13,4 +13,6 @@ return [
     'allProdects'=>'All Prodects',
     'addNewp'=>'Add New',
     'trashp'=>'Trash',
+    'Roles' => 'Roles'
+
 ];

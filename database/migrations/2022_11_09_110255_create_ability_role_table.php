@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ability_role_tabel', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('ability_role', function (Blueprint $table) {
+            $table->foreignId('ability_id');
+            $table->foreignId('role_id');
+            $table->primary(['ability_id','role_id']);
 
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ability_role_tabel');
+        Schema::dropIfExists('ability_role');
     }
 };

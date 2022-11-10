@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -17,6 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+        Gate::authorize('all_products');
+
         $products = Product::with('category')->orderByDesc('id')->paginate(10);
 
         return view('admin.products.index', compact('products'));

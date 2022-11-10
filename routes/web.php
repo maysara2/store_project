@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProdectConteoller;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\Rolecontroller;
 use App\Http\Controllers\Admin\UserConteoller;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainConteoller;
@@ -34,6 +35,7 @@ Route::get('/',[AdminController::class,'index'])->name('index');
 
         Route::get('users',[UserConteoller::class,'index'])->name('users.index');
         Route::delete('users/{id}',[UserConteoller::class,'destroy'])->name('users.destroy');
+        Route::resource('roles',Rolecontroller::class);
 
         // Route::get('payment',[PaymentController::class,'index'])->name('payment.index');
         // Route::delete('payment/{id}',[PaymentController::class,'destroy'])->name('payment.destroy');
